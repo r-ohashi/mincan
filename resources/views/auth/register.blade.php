@@ -11,12 +11,12 @@
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('email', 'メールアドレス') !!}
-                    {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
+                    {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="form-group">
                     {!! Form::label('name', '名前') !!}
-                    {!! Form::email('name', old('name'), ['class' => 'form-control']) !!}
+                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="form-group">
