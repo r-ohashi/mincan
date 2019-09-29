@@ -44,6 +44,11 @@
                                                 '福岡', '佐賀', '長崎', '熊本', '大分', '宮崎', '鹿児島', '沖縄'
                                                 ]) !!}
                 </div>
+                
+                <div class="form-group">
+                    {!! Form::label('introducion', '自己紹介') !!}
+                    {!! Form::text('introduction', old('introduction'), ['class' => 'form-control']) !!}
+                </div>
                
                 {!! Form::submit('編集', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}

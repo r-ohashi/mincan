@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -23,4 +21,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::get('users/{id}/edit', 'UsersController@edit')->name('user.edit');
-Route::put('user/{id}', 'UsersController@update')->name('user.update');
+Route::put('users/{id}', 'UsersController@update')->name('user.update');
+
+Route::resource('users', 'UsersController');
+Route::resource('posts', 'PostsController');

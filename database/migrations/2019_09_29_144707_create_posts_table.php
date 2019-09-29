@@ -17,10 +17,9 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('user_id')->unsigned()->index();
-            $table->string('way');
             $table->string('style');
-            $table->string('sge');
-            $table->sring('content');
+            $table->string('age');
+            $table->string('content')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');
