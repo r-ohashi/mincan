@@ -20,16 +20,6 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('password', 'パスワード') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
-                </div>
-                
-                <div class="form-group">
-                    {!! Form::label('password_confirmation', 'パスワード（確認用）') !!}
-                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-                </div>
-                
-                <div class="form-group">
                     {!! Form::label('age', '年齢') !!}
                     {!! Form::select('age', ['‐‐','10代', '20代', '30代', '40代', '50代', '60代', '70代～']) !!}
                 </div>

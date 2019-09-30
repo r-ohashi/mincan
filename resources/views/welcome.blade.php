@@ -16,8 +16,11 @@
     @if (count($posts) > 0)
         <ul class="list-unstyled">
             @foreach ($posts as $post)
-                <div>{{ $post->title }}</div>
-                <div>{{ $post->content }}</div>
+                <div>タイトル：{{ $post->title }}</div>
+                <div>詳細：{{ $post->content }}</div>
+                <div>年齢：{{ $post->ageToString() }}</div>
+                <div>方式：{{ $post->styleTostring() }}</div>
+                {!! link_to_route('posts.show', '募集詳細',['id' => $post->id], ['class' => 'btn btn-lg btn-primary']) !!}
                 
                 @if (Auth::id() == $post->user_id)
                     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
@@ -27,5 +30,4 @@
             @endforeach
         </ul>
     @endif
-    
 @endsection

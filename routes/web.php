@@ -25,3 +25,4 @@ Route::put('users/{id}', 'UsersController@update')->name('user.update');
 
 Route::resource('users', 'UsersController');
 Route::resource('posts', 'PostsController');
+Route::resource('comments', 'CommentsController');
