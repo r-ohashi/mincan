@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model
 {
-    protected $fillable = ['title', 'user_id', 'way', 'style', 'age', 'content'];
+    protected $fillable = ['title', 'user_id', 'way', 'style', 'place','age', 'content'];
     
     public function user()
     {
@@ -16,10 +16,6 @@ class Posts extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-    
-    public function ageToString() {
-        return \Config::get("age.".$this->age);
     }
     
     public function styleToString() {

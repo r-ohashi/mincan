@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@extends('users.header')
     <div class="text-center">
         <h1>ユーザーページ</h1>
     </div>

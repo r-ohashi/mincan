@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('post.index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -25,4 +25,8 @@ Route::put('users/{id}', 'UsersController@update')->name('user.update');
 
 Route::resource('users', 'UsersController');
 Route::resource('posts', 'PostsController');
-Route::resource('comments', 'CommentsController');
+
+Route::get('posts/{id}/comments', 'CommentsController@index')->name('comments.index');
+Route::post('comments', 'CommentsController@store')->name('comments.store');
+Route::get('posts/{id}/comments/create', 'CommentsController@create')->name('comments.create');
+Route::delete('comments{id}', 'CommentsController@destroy')->name('comments.delete');

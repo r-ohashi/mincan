@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Comment;
+use App\Posts;
 
 class CommentsController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $comments = Comment::all();
+        $post = Posts::find($id);
         
-        return view('comment.index', [
+        return view('comments.index', [
             'comments' => $comments,
+            'post' => $post
         ]);
     }
     
@@ -20,9 +24,10 @@ class CommentsController extends Controller
     {
         $request->user()->comments()->create([
             'content' => $request->content,
+            'post_id' => $request->post_id,
         ]);
         
-        return redirect('posts.show');
+        return redirect('comments.index');
     }
     
     public function destroy($id)
@@ -33,15 +38,17 @@ class CommentsController extends Controller
             $comment->delete();
         }
         
-        return redirect ('posts.show');
+        return redirect ('comments.index');
     }
     
-    public function create()
+    public function create($id)
     {
-        $post = new Comment;
+        $comment = new Comment;
+        $post = Posts::find($id);
         
         return view('comments.create', [
             'comment' => $comment,
+            'post' => $post,
         ]);
     }
 }

@@ -22,6 +22,7 @@ class PostsController extends Controller
             'title' => $request->title,
             'style' => $request->style,
             'age' => $request->age,
+            'place' => $request->place,
             'content' => $request->content,
         ]);
         
