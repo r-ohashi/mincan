@@ -16,35 +16,36 @@ class CommentsController extends Controller
         
         return view('comments.index', [
             'comments' => $comments,
-            'post' => $post
+            'post' => $post,
         ]);
     }
     
     public function store(Request $request)
     {
+        $post = Posts::find($request->query("post_id"));
         $request->user()->comments()->create([
             'content' => $request->content,
             'post_id' => $request->post_id,
         ]);
         
-        return redirect('comments.index');
+        return redirect()->route('comments.index', ['id' => $post->id]);
     }
     
     public function destroy($id)
     {
-        $post = Comment::find($id);
+        $comment = Comment::find($id);
         
         if (\Auth::id() === $comment->user_id){
             $comment->delete();
         }
         
-        return redirect ('comments.index');
+        return back();
     }
     
-    public function create($id)
+    public function create(Request $request)
     {
         $comment = new Comment;
-        $post = Posts::find($id);
+        $post = Posts::find($request->query("post_id"));
         
         return view('comments.create', [
             'comment' => $comment,

@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'age', 'adress', 'introduction'
+        'name', 'post_id', 'email', 'password', 'age', 'adress', 'introduction'
     ];
     
     public function posts()

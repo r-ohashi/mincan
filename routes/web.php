@@ -27,6 +27,6 @@ Route::resource('users', 'UsersController');
 Route::resource('posts', 'PostsController');
 
 Route::get('posts/{id}/comments', 'CommentsController@index')->name('comments.index');
-Route::post('comments', 'CommentsController@store')->name('comments.store');
-Route::get('posts/{id}/comments/create', 'CommentsController@create')->name('comments.create');
-Route::delete('comments{id}', 'CommentsController@destroy')->name('comments.delete');
+Route::post('comments/store', 'CommentsController@store')->name('comments.store');
+Route::get('comments/create', 'CommentsController@create')->name('comments.create');
+Route::delete('comments/{id}', 'CommentsController@destroy')->name('comments.destroy');

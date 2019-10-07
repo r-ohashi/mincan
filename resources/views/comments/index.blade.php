@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@extends('comments.header')
 
 <div>タイトル：{{ $post->title }}</div>
 <div>開催場所：{{ $post->place }}</div>
@@ -22,7 +23,7 @@
 @endif
 
 @if (Auth::check())
-    {!! link_to_route('comments.create', 'コメント投稿', [$post->id], ['class' => 'btn btn-lg btn-primary']) !!}
+    {!! link_to_route('comments.create', 'コメント投稿', ['post_id' => $post->id], ['class' => 'btn btn-lg btn-primary']) !!}
 @endif
     
 @endsection
