@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@extends('posts.header')
 
     <h1>新規募集作成</h1>
 

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@extends('users.header')
     <div class="text-center">
-        <h1>ユーザーページ</h1>
+        <h1>登録情報変更</h1>
     </div>
     
     <div class="row">

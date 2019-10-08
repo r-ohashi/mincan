@@ -47,9 +47,6 @@ class CommentsController extends Controller
         $comment = new Comment;
         $post = Posts::find($request->query("post_id"));
         
-        return view('comments.create', [
-            'comment' => $comment,
-            'post' => $post,
-        ]);
+       
     }
 }
