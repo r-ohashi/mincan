@@ -11,7 +11,7 @@ class CommentsController extends Controller
 {
     public function index($id)
     {
-        $comments = Comment::all();
+        $comments = Comment::orderBy('created_at', 'desc')->paginate(10);
         $post = Posts::find($id);
         
         return view('comments.index', [

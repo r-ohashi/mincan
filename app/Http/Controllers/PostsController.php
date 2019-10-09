@@ -9,7 +9,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Posts::all();
+        $posts = Posts::orderBy('created_at', 'desc')->paginate(10);
         
         return view('welcome', [
             'posts' => $posts,
@@ -23,6 +23,8 @@ class PostsController extends Controller
             'style' => $request->style,
             'age' => $request->age,
             'place' => $request->place,
+            'date1' =>$request->date1,
+            'date2' =>$request->date2,
             'content' => $request->content,
         ]);
         

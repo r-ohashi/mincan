@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('style');
             $table->string('age');
             $table->string('place');
+            $table->string('date1');
+            $table->string('date2');
             $table->string('content')->nullable();
             $table->timestamps();
             

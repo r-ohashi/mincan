@@ -1,20 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="text-center">
     <h1>新規募集作成</h1>
-
-    <div class="row">
-        <div class="col-6">
+    </div>
+    <div class="mb-4 row">
             {!! Form::model($post, ['route' => 'posts.store']) !!}
                 <div class="form-group">
                     {!! Form::label('title', 'タイトル') !!}
                     {!! Form::text('title', null, ['class' => 'form-control']) !!}
-                </div>
-                
-                <div class="form-group">
-                    {!! Form::label('style', '形式') !!}
-                    {!! Form::select('style', ['--', '宿泊', '日帰り']) !!}
                 </div>
                 
                 <div class="form-group">
@@ -136,13 +130,29 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('content', '詳細') !!}
-                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('style', '形式') !!}
+                    {!! Form::select('style', ['--', '宿泊', '日帰り']) !!}
                 </div>
+                
+                <div class="form-group row">
+                    <div>
+                        {!! Form::label('date', '開始日付:') !!}
+                        {!! Form::date('date1',null,['class' => 'form-control']) !!}
+                    </div>
+                    <div>
+                        {!! Form::label('date', '終了日付:') !!}
+                        {!! Form::date('date2',null,['class' => 'form-control']) !!}
+                    </div>
+                 </div>  
+                    
+                <div class="form-group">
+                    {!! Form::label('content', '詳細') !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+                </div>
+                
         
                 {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}
         
             {!! Form::close() !!}
-        </div>
     </div>
 @endsection
