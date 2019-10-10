@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Comment;
-use App\Posts;
+use App\Post;
+use App\User;
 
 class CommentsController extends Controller
 {
     public function index($id)
     {
-        $comments = Comment::orderBy('created_at', 'desc')->paginate(10);
-        $post = Posts::find($id);
+        $post = Post::find($id);
+        $comments = Comment::orderBy('created_at', 'desc')->where('post_id', $post->id)->get()->paginate(10);
         
         return view('comments.index', [
             'comments' => $comments,
@@ -22,7 +23,7 @@ class CommentsController extends Controller
     
     public function store(Request $request)
     {
-        $post = Posts::find($request->query("post_id"));
+        $post = Post::find($request->query("post_id"));
         $request->user()->comments()->create([
             'content' => $request->content,
             'post_id' => $request->post_id,
@@ -45,7 +46,7 @@ class CommentsController extends Controller
     public function create(Request $request)
     {
         $comment = new Comment;
-        $post = Posts::find($request->query("post_id"));
+        $post = Post::find($request->query("post_id"));
         
        
     }

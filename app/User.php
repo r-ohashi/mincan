@@ -10,12 +10,12 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'post_id', 'email', 'password', 'age', 'adress', 'introduction'
+        'name', 'email', 'password', 'age', 'adress', 'introduction'
     ];
     
     public function posts()
     {
-        return $this->hasMany(Posts::class);
+        return $this->hasMany(Post::class);
     }
     
     public function comments()
