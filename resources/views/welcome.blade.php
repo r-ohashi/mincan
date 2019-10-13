@@ -8,9 +8,9 @@
     
     @if (count($posts) > 0)
         @foreach ($posts as $post)
-            <div class="card mb-4 container">
-                <div class="card-header row">
-                    <div>{{ $post->title }}</div>　　　　
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-left">{{ $post->title }}</div>　　　　
                     <div class="float-right">投稿日時：{{ $post->created_at->format('Y年m月d日 H時i分s秒') }}</div>
                 </div>
                     
@@ -37,6 +37,19 @@
                     <div>
                         {!! link_to_route('comments.index', 'コメント・詳細を見る',[$post->id], ['class' => 'btn btn-primary btn-sm']) !!}
                     </div>
+                    @if (Auth::check())
+                    <div>
+                        @if (Auth::user()->is_favoriting($post->id))
+                            {!! Form::open(['route' => ['favorites.unfavorite', $post->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('取り消す', ['class' => "btn btn-danger btn-sm"]) !!}
+                            {!! Form::close() !!}
+                        @else
+                            {!! Form::open(['route' => ['favorites.favorite', $post->id]]) !!}
+                                {!! Form::submit('行きたい！', ['class' => "btn btn-primary btn-sm"]) !!}
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                    @endif
                     <div>
                         @if (Auth::id() == $post->user_id)
                             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}

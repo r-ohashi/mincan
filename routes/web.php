@@ -30,3 +30,10 @@ Route::get('posts/{id}/comments', 'CommentsController@index')->name('comments.in
 Route::post('comments/store', 'CommentsController@store')->name('comments.store');
 Route::get('comments/create', 'CommentsController@create')->name('comments.create');
 Route::delete('comments/{id}', 'CommentsController@destroy')->name('comments.destroy');
+
+Route::get('paginate', 'SearchController@index')->name('search.index');
+
+Route::group(['prefix' => 'posts/{id}'], function () {
+    Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
+    Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
+});

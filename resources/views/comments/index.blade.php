@@ -63,6 +63,8 @@
                     {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </ul>
+@else
+        {!! link_to_route('signup.get', 'コメント投稿には会員登録が必要です',[], ['class' => 'btn btn-primary btn-sm']) !!}
 @endif
 
 {{ $comments->links('pagination::bootstrap-4') }}
