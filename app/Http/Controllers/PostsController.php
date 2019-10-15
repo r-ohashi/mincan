@@ -10,7 +10,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        
         return view('welcome', [
             'posts' => $posts,
         ]);
@@ -21,14 +20,15 @@ class PostsController extends Controller
         $request->user()->posts()->create([
             'title' => $request->title,
             'style' => $request->style,
-            'age' => $request->age,
-            'place' => implode(",", $request->place),
+            'age' =>  implode(",", $request->ages),
+            'place' => implode(",", $request->places),
             'date1' =>$request->date1,
             'date2' =>$request->date2,
             'content' => $request->content,
+            
         ]);
-        define('age', [0=>'特になし',1=>'10代',2=>'20代',3=>'30代',4=>'40代',5=>'50代',6=>'60代',7=>'70代~']);
-        return redirect('/');
+        
+        return redirect ('/');
     }
     
     public function destroy($id)

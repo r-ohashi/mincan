@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+    
+    <div>
+        @include('users.navtabs')
+    </div>
+    
     <div class="text-center">
         <h1>登録情報変更</h1>
     </div>
     
     <div class="row">
+        
         <div class="col-sm-6 offset-sm-3">
-            
+        
+        
             {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put']) !!}
            　　　<div class="form-group">
                     {!! Form::label('email', 'メールアドレス') !!}

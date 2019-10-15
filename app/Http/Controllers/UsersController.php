@@ -7,6 +7,15 @@ use App\User;
 
 class UsersController extends Controller
 {
+    public function show($id)
+    {
+        $user = User::find($id);
+        
+        return view('users.show',[
+            'user' => $user
+        ]);
+    }
+    
     public function edit($id)
     {
         $user = User::find($id);
@@ -27,17 +36,25 @@ class UsersController extends Controller
         
         $user->save();
         
-        return redirect('/');
+        return redirect()->route('users.edit', ['id' => $user->id]);
         
     }
     
+    public function favoritings($id)
+    {
+        $user = User::find($id);
+        $favoritingss = $user->favoritings()->paginate(10);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $data = [
+            'user' => $user,
+            'users' => $favoritingss,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.favoritings', $data);
+    }
+
     public function destroy($id)
     {
         //

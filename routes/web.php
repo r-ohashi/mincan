@@ -20,8 +20,10 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
+Route::get('users/{id}/show', 'UsersController@show')->name('user.show');
 Route::get('users/{id}/edit', 'UsersController@edit')->name('user.edit');
 Route::put('users/{id}', 'UsersController@update')->name('user.update');
+
 
 Route::resource('users', 'UsersController');
 Route::resource('posts', 'PostsController');
@@ -36,4 +38,8 @@ Route::get('paginate', 'SearchController@index')->name('search.index');
 Route::group(['prefix' => 'posts/{id}'], function () {
     Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
     Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
+});
+
+Route::group(['prefix' => 'user/{id}'], function () {
+    Route::get('favoritings', 'UsersController@favoritings')->name('users.favoritings');
 });

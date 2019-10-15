@@ -18,19 +18,23 @@
                     <table class="table-bodered border table table-bodered">
                     <tr>
                         <th>開催場所</th>
-                        <td>{{ $post->place }}</td>
+                        <td>{{ implode(', ', $post->place) }}</td>
                     </tr>
                     <tr>
                         <th>募集年代</th>
-                        <td>{{ $post->age }}</td>
+                        <td>{{ implode(', ', $post->age) }}</td>
                     </tr>
                     <tr>
                         <th>方式</th>
-                        <td>{{ $post->styleTostring() }}</td>
+                        <td>{{ $post->styleToString() }}</td>
                     </tr>
                     <tr>
                         <th>日程</th>
                         <td>{{ $post->date1 }} ～ {{ $post->date2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>興味のある人</th>
+                        <td></td>
                     </tr>
                     </table>
                     
@@ -50,7 +54,7 @@
                         @endif
                     </div>
                     @endif
-                    <div>
+                    <div class="float-right">
                         @if (Auth::id() == $post->user_id)
                             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('投稿削除', ['class' => 'btn btn-danger btn-sm']) !!}

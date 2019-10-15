@@ -27,7 +27,7 @@
                                 <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
                             @else
                                 <div class="text-center">
-                                    <li class="nav-item">{!! link_to_route('post.index', '募集一覧', [], ['class' => 'nav-link']) !!}</li>
+                                    <li class="nav-item">{!! link_to_route('posts.index', '募集一覧', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('signup.get', '新規募集作成（会員登録が必要です）', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('login.post', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>

@@ -4,7 +4,7 @@
     <div class="text-center">
     <h1>新規募集作成</h1>
     </div>
-    <div class="mb-4 row">
+    <div>
             {!! Form::model($post, ['route' => 'posts.store']) !!}
                 <div class="form-group">
                     {!! Form::label('title', 'タイトル') !!}
@@ -12,8 +12,14 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('place', '開催場所') !!}
-                    {!! Form::select('place[]', ['未定','北海道','青森','岩手','宮城','秋田','山形','福島',
+                    {!! Form::label('ages', '募集年代（複数選択可）') !!}
+                    {!! Form::select('ages[]', ['特になし','10代','20代','30代','40代','50代','60代','70代~']
+                    , null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+                </div>
+                
+                <div class="form-group">
+                    {!! Form::label('places', '開催場所（複数選択可）') !!}
+                    {!! Form::select('places[]', ['未定','北海道','青森','岩手','宮城','秋田','山形','福島',
                                                 '茨城','栃木','群馬','埼玉','千葉','東京','神奈川',
                                                 '新潟','富山','石川','福井','山梨','長野','岐阜','静岡','愛知',
                                                 '三重','滋賀','大阪','兵庫','奈良','和歌山',
@@ -24,13 +30,8 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('age', '募集年代') !!}
-                    {!! Form::select('age[]', ['特になし','10代','20代','30代','40代','50代','60代','70代~'], null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-                </div>
-                
-                <div class="form-group">
                     {!! Form::label('style', '形式') !!}
-                    {!! Form::select('style', ['--', '宿泊', '日帰り']) !!}
+                    {!! Form::select('style', ['未定', '宿泊', '日帰り'],null, ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="form-group">
@@ -50,7 +51,7 @@
                 </div>
                 
         
-                {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}
+                <di>{!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}</div>
         
             {!! Form::close() !!}
     </div>
