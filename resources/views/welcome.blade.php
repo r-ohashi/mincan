@@ -13,7 +13,7 @@
                     <div class="float-left">{{ $post->title }}</div>　　　　
                     <div class="float-right">投稿日時：{{ $post->created_at->format('Y年m月d日 H時i分s秒') }}</div>
                 </div>
-                    
+                
                 <div class="card-body row">
                     <table class="table-bodered border table table-bodered">
                     <tr>
@@ -33,7 +33,7 @@
                         <td>{{ $post->date1 }} ～ {{ $post->date2 }}</td>
                     </tr>
                     <tr>
-                        <th>興味のある人</th>
+                        <th></th>
                         <td></td>
                     </tr>
                     </table>

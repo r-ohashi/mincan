@@ -4,4 +4,7 @@
     <div>
         @include('users.navtabs')
     </div>
+    <div>
+        
+    </div>
 @endsection
