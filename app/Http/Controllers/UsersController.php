@@ -37,27 +37,8 @@ class UsersController extends Controller
         
         $user->save();
         
-        return redirect()->route('users.edit', ['id' => $user->id]);
+        return redirect()->route('users.show', ['id' => $user->id]);
         
     }
     
-    public function favoritings($id)
-    {
-        $user = User::find($id);
-        $favoritingss = $user->favoritings()->paginate(10);
-
-        $data = [
-            'user' => $user,
-            'users' => $favoritingss,
-        ];
-
-        $data += $this->counts($user);
-
-        return view('users.favoritings', $data);
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
 }

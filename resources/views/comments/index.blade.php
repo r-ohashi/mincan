@@ -28,10 +28,6 @@
         <th>詳細</th>
         <td>{{ $post->content }}</td>
     </tr>
-    <tr>
-        <th>興味のある人</th>
-        <td></td>
-    </tr>
 </table>
 
 <h2>コメント一覧</h2>
@@ -39,7 +35,7 @@
     @foreach ($comments as $comment)
         <div class="card">
             <div class="card-header">
-                <div class="float-left">{{ $comment->user->name }}さんのコメント</div>
+                <div class="float-left">{!! link_to_route('user.show', $comment->user->name, ['id' => $comment->user->id]) !!}さんのコメント</div>
                 <div class="float-right row">
                     <div>投稿日時：{{ $comment->created_at->format('Y年m月d日 H時i分s秒') }}</div>
                     <div>

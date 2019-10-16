@@ -2,10 +2,6 @@
 
 @section('content')
     
-    <div>
-        @include('users.navtabs')
-    </div>
-    
     <div class="text-center">
         <h1>登録情報変更</h1>
     </div>
@@ -22,7 +18,7 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('name', '名前') !!}
+                    {!! Form::label('name', 'ユーザーネーム') !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                 </div>
                 

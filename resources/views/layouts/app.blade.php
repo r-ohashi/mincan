@@ -23,7 +23,7 @@
                             @if (Auth::check())
     　　　                         <li class="nav-item">{!! link_to_route('post.index', '募集一覧', [], ['class' => 'nav-link']) !!}</li>
                                 <li class="nav-item">{!! link_to_route('posts.create', '新規募集作成', [], ['class' => 'nav-link']) !!}</li>
-                                <li class="nav-item">{!! link_to_route('user.edit', 'ユーザーページ', ['id' => Auth::id()], ['class' => 'nav-link']) !!}</li>
+                                <li class="nav-item">{!! link_to_route('user.show', 'ユーザーページ', ['id' => Auth::id()], ['class' => 'nav-link']) !!}</li>
                                 <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
                             @else
                                 <div class="text-center">
