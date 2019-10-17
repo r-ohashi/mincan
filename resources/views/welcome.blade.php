@@ -6,6 +6,13 @@
         <h1>募集一覧</h1>
     </div>
     
+<div class="search">
+    {!! Form::open(['route' => ['posts.search'],'method' => 'GET']) !!}
+        {!! Form::text('q', null) !!}
+        {!! Form::submit('検索') !!}
+    {!! Form::close() !!}
+</div>
+    
     @if (count($posts) > 0)
         @foreach ($posts as $post)
             <div class="card">
@@ -16,6 +23,10 @@
                 
                 <div class="card-body row">
                     <table class="table-bodered border table table-bodered">
+                        <tr>
+                            <th>投稿者</th>
+                            <td>{!! link_to_route('user.show', $post->user->name, ['id' => $post->user->id]) !!}</td>
+                        </tr>
                         <tr>
                             <th>開催場所</th>
                             <td>{{ implode(', ', $post->place) }}</td>
@@ -48,6 +59,7 @@
                                 {!! Form::submit('行きたい！', ['class' => "btn btn-primary btn-sm"]) !!}
                             {!! Form::close() !!}
                         @endif
+                        
                     </div>
                     @endif
                     <div class="float-right">
@@ -61,7 +73,7 @@
             </div>
         @endforeach
     @endif
-    
+   
     {{ $posts->links('pagination::bootstrap-4') }}
     
 @endsection

@@ -5,6 +5,10 @@
 <h2>募集詳細</h2>
 <table class="table-bodered border table table-bodered ">
     <tr>
+        <th>投稿者</th>
+        <td>{!! link_to_route('user.show', $post->user->name, ['id' => $post->user->id]) !!}</td>
+    </tr>
+    <tr>
         <th>タイトル</th>
         <td>{{ $post->title }}</td>
     </tr>

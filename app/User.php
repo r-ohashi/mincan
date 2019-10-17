@@ -65,4 +65,12 @@ class User extends Authenticatable
     {
         return $this->favoritings()->where('post_id', $postId)->exists();
     }
+    
+    public function ageToString() {
+        return \Config::get("age.".$this->age);
+    }
+    
+    public function adressToString() {
+        return \Config::get("adress.".$this->adress);
+    }
 }

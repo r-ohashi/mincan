@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Post;
 
 class PostsController extends Controller
@@ -59,5 +59,19 @@ class PostsController extends Controller
             'post' => $post,
         ]);
     }
+ 
+    public function search() {
+   
+    	$query = Request::get('q');
     
+    	if ($query) {
+    		$posts = Post::where('title', 'LIKE', '%'.$query.'%')->paginate(10);
+    	}else{
+    		$posts = Post::paginate(10);
+    	}
+    
+            return view('welcome',[
+        	'posts' => $posts,
+        ]);
+    }
 }
