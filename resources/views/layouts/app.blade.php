@@ -9,9 +9,9 @@
     </head>
 
     <body>
-        <header class="mb-4">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">みんきゃん</a>
+        <header class="mb-4 sticky-top">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+                <a class="navbar-brand" href="/">一緒にキャンプに行く人を探すサイト</a>
                 
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
                     <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
                                 <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
                             @else
                                 <div class="text-center">
-                                    <li class="nav-item">{!! link_to_route('posts.index', '募集一覧', [], ['class' => 'nav-link']) !!}</li>
+                                    <li class="nav-item">{!! link_to_route('post.index', '募集一覧', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('signup.get', '新規募集作成（会員登録が必要です）', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('login.post', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                                     <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>

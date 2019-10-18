@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('style', '形式') !!}
+                    {!! Form::label('style', '宿泊・日帰り') !!}
                     {!! Form::select('style', ['未定', '宿泊', '日帰り'],null, ['class' => 'form-control']) !!}
                 </div>
                 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use App\Post;
 
 class PostsController extends Controller
@@ -60,15 +60,33 @@ class PostsController extends Controller
         ]);
     }
  
-    public function search() {
+    public function search(Request $request) {
    
-    	$query = Request::get('q');
+    	$style_query = $request->query("style_keyword");
+    	$age_query = $request->query("age_keyword");
+    	$place_query = $request->query("place_keyword");
+    	$data1_query = $request->query("data1_keyword");
+    	$data2_query = $request->query("data2_keyword");
+    	
+    	$query = Post::query();
     
-    	if ($query) {
-    		$posts = Post::where('title', 'LIKE', '%'.$query.'%')->paginate(10);
-    	}else{
-    		$posts = Post::paginate(10);
+    	if (!empty($style_query)) {
+    		$query->where('style', 'LIKE', '%'.$style_query.'%');
     	}
+    	if (!empty($age_query)) {
+    		$query->where('age', 'LIKE', '%'.$age_query.'%');
+    	}
+    	if (!empty($place_query)) {
+    		$query->where('place', 'LIKE', '%'.$place_query.'%');
+    	}
+    	if (!empty($data1_query)) {
+    		$query->where('place', 'LIKE', '%'.$data1_query.'%');
+    	}
+    	if (!empty($data2_query)) {
+    		$query->where('place', 'LIKE', '%'.$data2_query.'%');
+    	}
+    	
+    	$posts = $query->paginate(10);
     
             return view('welcome',[
         	'posts' => $posts,
