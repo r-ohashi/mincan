@@ -116,6 +116,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => ['name'=>'名前',
+                     'email'=>'メールアドレス',
+                     'password'=>'パスワード',
+                     'title'=>'タイトル',
+                     'age'=>'募集年代',
+                     'place'=>'開催場所',
+                     'style'=>'宿泊・日帰り',
+                     'date1'=>'開始日付',
+                     'date2'=>'終了日付',
+                     'content'=>'詳細',
+                     'comment_content'=>'コメント内容'
+                    ],
 
 ];
