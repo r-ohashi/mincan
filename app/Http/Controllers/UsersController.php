@@ -28,6 +28,10 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'introduction' => 'required|max:1000',
+        ]);
+        
         $user = User::find($id);
         
         $user->name = $request->name;

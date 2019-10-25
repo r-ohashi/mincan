@@ -26,6 +26,7 @@ Route::get('users/{id}/edit', 'UsersController@edit')->name('user.edit');
 Route::put('users/{id}', 'UsersController@update')->name('user.update');
 
 Route::resource('posts', 'PostsController');
+
 Route::get('posts', 'PostsController@search')->name('posts.search');
 Route::get('posts/{id}/comments', 'CommentsController@index')->name('comments.index');
 

@@ -20,11 +20,11 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'style' => 'required',
-            //'age' =>  'required',
-            //'place' => 'required',
+            'ages' =>  'required',
+            'places' => 'required',
             'date1' =>'required',
             'date2' =>'required',
-            'content' => 'required',            
+            'content' => 'required|max:1000',            
         ]);        
 
         $request->user()->posts()->create([
@@ -75,8 +75,8 @@ class PostsController extends Controller
     	$style_query = $request->query("style_keyword");
     	$age_query = $request->query("age_keyword");
     	$place_query = $request->query("place_keyword");
-    	$data1_query = $request->query("data1_keyword");
-    	$data2_query = $request->query("data2_keyword");
+    	$date1_query = $request->query("date1_keyword");
+    	$date2_query = $request->query("date2_keyword");
     	
     	$query = Post::query();
     
@@ -89,11 +89,11 @@ class PostsController extends Controller
     	if (!empty($place_query)) {
     		$query->where('place', 'LIKE', '%'.$place_query.'%');
     	}
-    	if (!empty($data1_query)) {
-    		$query->where('place', 'LIKE', '%'.$data1_query.'%');
+    	if (!empty($date1_query)) {
+    		$query->whereDate('date1', '>=', $date1_query);
     	}
-    	if (!empty($data2_query)) {
-    		$query->where('place', 'LIKE', '%'.$data2_query.'%');
+    	if (!empty($date2_query)) {
+    		$query->whereDate('date2', '<=', $date2_query);
     	}
     	
     	$posts = $query->paginate(10);

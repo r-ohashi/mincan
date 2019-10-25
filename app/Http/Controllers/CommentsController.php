@@ -24,16 +24,16 @@ class CommentsController extends Controller
     
     public function store(Request $request)
     {
-         //$this->validate($request, [
-            //'comment_content' => 'required',
-        //]);
+        $this->validate($request, [
+            'comment_content' => 'required|max:500',
+        ]);
         
         $post = Post::find($request->query("post_id"));
         $request->user()->comments()->create([
             'comment_content' => $request->comment_content,
             'post_id' => $request->post_id,
         ]);
-        
+
         return redirect()->route('comments.index', ['id' => $post->id]);
     }
     

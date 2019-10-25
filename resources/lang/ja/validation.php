@@ -126,7 +126,8 @@ return [
                      'date1'=>'開始日付',
                      'date2'=>'終了日付',
                      'content'=>'詳細',
-                     'comment_content'=>'コメント内容'
+                     'comment_content'=>'コメント内容',
+                     'introduction'=>'自己紹介',
                     ],
 
 ];

@@ -20,9 +20,9 @@ class CreatePostsTable extends Migration
             $table->string('style');
             $table->string('age');
             $table->string('place');
-            $table->string('date1');
-            $table->string('date2');
-            $table->string('content')->nullable();
+            $table->date('date1');
+            $table->date('date2');
+            $table->string('content',1000)->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -1,6 +1,6 @@
 @if (count($posts) > 0)
     @foreach ($posts as $post)
-        <div class="card">
+        <div class="card m-1">
             <div class="card-header">
                 <div class="float-left">{{ $post->title }}</div>　　　　
                 <div class="float-right">投稿日時：{{ $post->created_at->format('Y年m月d日 H時i分s秒') }}</div>

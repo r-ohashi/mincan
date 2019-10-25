@@ -7,7 +7,7 @@
     </div>
 
 @include('posts.search')
-    
+
 @include('posts.index')
     
 @endsection
