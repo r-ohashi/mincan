@@ -23,6 +23,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::resource('users', 'UsersController');
 Route::get('users/{id}/show', 'UsersController@show')->name('user.show');
 Route::get('users/{id}/edit', 'UsersController@edit')->name('user.edit');
+Route::get('users/{id}/favoritings', 'UsersController@favoritings')->name('user.favoritings');
 Route::put('users/{id}', 'UsersController@update')->name('user.update');
 
 Route::resource('posts', 'PostsController');

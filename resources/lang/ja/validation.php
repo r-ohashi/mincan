@@ -128,6 +128,10 @@ return [
                      'content'=>'詳細',
                      'comment_content'=>'コメント内容',
                      'introduction'=>'自己紹介',
+                     'ages'=>'募集年代',
+                     'places'=>'開催場所',
+                     'yesterday'=>'今日',
+                     'date2'=>'終了日付',
                     ],
 
 ];

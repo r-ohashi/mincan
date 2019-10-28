@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<ul class="nav nav-tabs nav-justified mb-3">
+    <li class="nav-item"><a href="{{ route('user.show', ['id' => $user->id]) }}" class="nav-link">プロフィール</a></li>
+    <li class="nav-item"><a href="{{ route('user.favoritings', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">お気に入り一覧</a></li>
+</ul>
     
     <div class="text-center">
         <h1>{{ $user->name }}さんのプロフィール</h1>

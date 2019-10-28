@@ -11,7 +11,7 @@
                                                 '徳島','香川','愛媛','高知',
                                                 '福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島','沖縄'],null, ['class' => 'form-control']) !!}        
         {!! Form::label('age_keyword', '　募集年代') !!}
-        {!! Form::select('age_keyword', ['特になし','10代','20代','30代','40代','50代','60代','70代~'],null, ['class' => 'form-control']) !!}
+        {!! Form::select('age_keyword', ['特になし','10代','20代','30代','40代','50代','60代','70代～'],null, ['class' => 'form-control']) !!}
         {!! Form::label('style_keyword', '　宿泊・日帰り') !!}
         {!! Form::select('style_keyword', ['未定', '宿泊', '日帰り'],null, ['class' => 'form-control']) !!}
         {!! Form::label('date1_keyword', '　開始日付～') !!}

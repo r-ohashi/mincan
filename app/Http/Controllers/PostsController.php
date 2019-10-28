@@ -24,7 +24,10 @@ class PostsController extends Controller
             'places' => 'required',
             'date1' =>'required',
             'date2' =>'required',
-            'content' => 'required|max:1000',            
+            'content' => 'required|max:1000',          
+            'date1' => 'after:yesterday',
+            'date2' => 'after:yesterday',
+            'date1' => 'before:data2',
         ]);        
 
         $request->user()->posts()->create([
