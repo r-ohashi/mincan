@@ -130,8 +130,7 @@ return [
                      'introduction'=>'自己紹介',
                      'ages'=>'募集年代',
                      'places'=>'開催場所',
-                     'yesterday'=>'今日',
-                     'date2'=>'終了日付',
+                     'now'=>'現在日時',
                     ],
 
 ];

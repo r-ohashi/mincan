@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Storage;
 
 class PostsController extends Controller
 {
@@ -22,12 +23,9 @@ class PostsController extends Controller
             'style' => 'required',
             'ages' =>  'required',
             'places' => 'required',
-            'date1' =>'required',
-            'date2' =>'required',
+            'date1' =>'required|after_or_equal:now|before_or_equal:date2',
+            'date2' =>'required|after_or_equal:now|after_or_equal:date1',
             'content' => 'required|max:1000',          
-            'date1' => 'after:yesterday',
-            'date2' => 'after:yesterday',
-            'date1' => 'before:data2',
         ]);        
 
         $request->user()->posts()->create([
@@ -38,9 +36,15 @@ class PostsController extends Controller
             'date1' =>$request->date1,
             'date2' =>$request->date2,
             'content' => $request->content,
-            
-        ]);
-        
+            ]);
+          if($request->has('avatar_image')) {
+              $image = $request->file('image');
+              // バケットの`myprefix`フォルダへアップロード
+              $path = Storage::disk('s3')->putFile('uploads', $image, 'public');
+              // アップロードした画像のフルパスを取得
+              $post->image_path = Storage::disk('s3')->url($path);
+          }
+          
         return redirect ('/');
     }
     

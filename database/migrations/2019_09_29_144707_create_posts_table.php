@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->date('date1');
             $table->date('date2');
             $table->string('content',1000)->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
