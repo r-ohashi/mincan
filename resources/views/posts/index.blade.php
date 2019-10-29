@@ -28,6 +28,13 @@
                         <th>日程</th>
                         <td>{{ $post->date1 }} ～ {{ $post->date2 }}</td>
                     </tr>
+
+                    @if ($post->image_path)
+                        <td>画像</td>
+                        <td>
+                        <img src="{{ $post->image_path }}">
+                        </td>
+                    @endif
                 </table>
                 
                 @include('posts.buttons')

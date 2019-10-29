@@ -24,7 +24,7 @@ class PostsController extends Controller
             'ages' =>  'required',
             'places' => 'required',
             'date1' =>'required|after_or_equal:now|before_or_equal:date2',
-            'date2' =>'required|after_or_equal:now|after_or_equal:date1',
+            'date2' =>'required|after_or_equal:date1',
             'content' => 'required|max:1000',          
         ]);        
 
@@ -37,13 +37,12 @@ class PostsController extends Controller
             'date2' =>$request->date2,
             'content' => $request->content,
             ]);
-          if($request->has('avatar_image')) {
+
+            if($request->has('image')){ 
               $image = $request->file('image');
-              // バケットの`myprefix`フォルダへアップロード
-              $path = Storage::disk('s3')->putFile('uploads', $image, 'public');
-              // アップロードした画像のフルパスを取得
+              $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
               $post->image_path = Storage::disk('s3')->url($path);
-          }
+            }
           
         return redirect ('/');
     }
@@ -78,6 +77,11 @@ class PostsController extends Controller
     }
  
     public function search(Request $request) {
+        
+        $this->validate($request, [
+            'date1_keyword' =>'before:date2_keyword|nullable',
+            'date2_keyword' =>'after:date1_keyword|nullable',
+        ]);     
    
     	$style_query = $request->query("style_keyword");
     	$age_query = $request->query("age_keyword");
@@ -93,9 +97,22 @@ class PostsController extends Controller
     	if (!empty($age_query)) {
     		$query->where('age', 'LIKE', '%'.$age_query.'%');
     	}
+    
+    
     	if (!empty($place_query)) {
-    		$query->where('place', 'LIKE', '%'.$place_query.'%');
+    		$query->where('place', 'LIKE', "$place_query");
     	}
+    	if (!empty($place_query)) {
+    		$query->orWhere('place', 'LIKE', "%,$place_query,%");
+    	}
+    	if (!empty($place_query)) {
+    		$query->orWhere('place', 'LIKE', "$place_query,%");
+    	}
+    	if (!empty($place_query)) {
+    		$query->orWhere('place', 'LIKE', "%,$place_query");
+    	}
+    
+    	
     	if (!empty($date1_query)) {
     		$query->whereDate('date1', '>=', $date1_query);
     	}

@@ -5,7 +5,7 @@
     <h1>新規募集作成</h1>
     </div>
     <div>
-            {!! Form::model($post, ['route' => 'posts.store']) !!}
+            {!! Form::model($post, ['route' => 'posts.store',"enctype"=>"multipart/form-data"]) !!}
                 <div class="form-group">
                     {!! Form::label('title', 'タイトル') !!}
                     {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -112,7 +112,7 @@
                     {!! Form::checkbox('places[]','38') !!}
                     {!! Form::label('places[]','高知') !!}
                     {!! Form::checkbox('places[]','39') !!}
-                    {!! Form::label('places[]','福岡') !!}
+                    {!! Form::label('places[]','福岡') !!}<br>
                     {!! Form::checkbox('places[]','40') !!}
                     {!! Form::label('places[]','佐賀') !!}
                     {!! Form::checkbox('places[]','41') !!}

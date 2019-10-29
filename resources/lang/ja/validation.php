@@ -130,7 +130,14 @@ return [
                      'introduction'=>'自己紹介',
                      'ages'=>'募集年代',
                      'places'=>'開催場所',
-                     'now'=>'現在日時',
+                     'date1_keyword'=>'開始日付',
+                     'date2_keyword'=>'終了日付',
                     ],
+                    
+    'custom' => [
+        'date1' => [
+            'after_or_equal'=>'開始日付には現在日付かそれ以降の日付を指定してください。',
+                    ],
+                ]
 
 ];

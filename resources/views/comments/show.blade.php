@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <th>詳細</th>
-        <td>{{ $post->content }}</td>
+        <td>{!! nl2br($post->content) !!}</td>
     </tr>
 </table>
 
@@ -49,7 +49,7 @@
             </div>
             
             <div class="card-body row">
-                {{ $comment->comment_content }}
+                {!! nl2br($comment->comment_content) !!}
             </div>
     　　</div>
     @endforeach
