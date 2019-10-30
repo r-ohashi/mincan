@@ -97,7 +97,7 @@ class PostsController extends Controller
     	if (!empty($age_query)) {
     		$query->where('age', 'LIKE', '%'.$age_query.'%');
     	}
-    
+        
     
     	if (!empty($place_query)) {
     		$query->where('place', 'LIKE', "$place_query");
