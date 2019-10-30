@@ -41,4 +41,3 @@ Route::get('paginate', 'SearchController@index')->name('search.index');
 Route::post('comments/store', 'CommentsController@store')->name('comments.store');
 Route::get('comments/create', 'CommentsController@create')->name('comments.create');
 Route::delete('comments/{id}', 'CommentsController@destroy')->name('comments.destroy');
-

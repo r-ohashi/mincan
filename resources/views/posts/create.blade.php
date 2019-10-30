@@ -151,10 +151,10 @@
                     {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
                 </div>
                 
-                {{--<div class="form-group">
+                <div class="form-group">
                     {{Form::label('image', '画像アップロード')}}
                     {{ Form::file('image') }}
-                </div>--}}
+                </div>
                 
                 <di>{!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}</div>
         
