@@ -92,15 +92,15 @@ class PostsController extends Controller
     	$query = Post::query();
     
     	if (!empty($style_query)) {
-    		$query->where('style', 'LIKE', '%'.$style_query.'%');
+    		$query->orWhere('style', 'LIKE', '%'.$style_query.'%');
     	}
     	if (!empty($age_query)) {
-    		$query->where('age', 'LIKE', '%'.$age_query.'%');
+    		$query->orWhere('age', 'LIKE', '%'.$age_query.'%');
     	}
         
     
     	if (!empty($place_query)) {
-    		$query->where('place', 'LIKE', "$place_query");
+    		$query->orWhere('place', 'LIKE', "$place_query");
     	}
     	if (!empty($place_query)) {
     		$query->orWhere('place', 'LIKE', "%,$place_query,%");
@@ -114,10 +114,10 @@ class PostsController extends Controller
     
     	
     	if (!empty($date1_query)) {
-    		$query->whereDate('date1', '>=', $date1_query);
+    		$query->orWhereDate('date1', '>=', $date1_query);
     	}
     	if (!empty($date2_query)) {
-    		$query->whereDate('date2', '<=', $date2_query);
+    		$query->orWhereDate('date2', '<=', $date2_query);
     	}
     	
     	$posts = $query->paginate(10);
